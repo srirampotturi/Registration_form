@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#registrationForm").submit(function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var firstName = $("#firstName").val();
+        var lastName = $("#lastName").val();
+        var gender = $("input[name='gender']:checked").val();
+        var age = $("#age").val();
+        var dob = $("#dob").val();
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var confirmPassword = $("#confirmPassword").val();
+        var phone = $("#phone").val();
+        var address = $("#address").val();
+        var state = $("#state").val();
+        var pinCode = $("#pinCode").val();
+        var hobbies = [];
+
+        alert("Form submitted successfully!");
+
+        // Reset the form after submission
+        $("#registrationForm")[0].reset();
+      });
+
+      // Password, Confirm Password, Age validation, and other scripts...
+
+      // Input validation messages
+      $("#firstName").on("input", function() {
+        if (!$(this).val().match(/^[A-Za-z]+$/)) {
+          $("#firstNameError").text("*Please enter only alphabets.*");
+        } else {
+          $("#firstNameError").text("");
+        }
+      });
+
+      $("#lastName").on("input", function() {
+        if (!$(this).val().match(/^[A-Za-z]+$/)) {
+          $("#lastNameError").text("*Please enter only the alphabets.*");
+        } else {
+          $("#lastNameError").text("");
+        }
+      });
+
+      $("#phone").on("input", function() {
+        var phone = $(this).val();
+  
+        // Validate phone number length
+        if (phone.length !== 10) {
+          $("#phoneError").text("*Phone number must contain 10 digits*");
+        } else {
+          $("#phoneError").text("");
+        }
+      });
+    });
+  </script>
+</head>
+  </script>
+</head>
+<body style="padding-left:30%; padding-right:25%;">
+    
+   
+  <form id="registrationForm" style="border:2px solid red;">
+    <h3 style="color:red ; font-size:27px; padding-left:12%; padding-bottom: 1%;">STUDENT REGISTRATION FORM</h3>
+    <label for="firstName" style="color:brown; "><b>    First Name:</b></label><span style="padding-left:7%;"></span>
+    <input type="text" id="firstName" pattern="[A-Za-z]+"  placeholder="Enter First Name" style="padding-left: 15%; padding-right: 20%; padding-top: 0.5%; padding-bottom: 0.5%;border: 3px solid red"/><br/>
+    <span id="firstNameError" style="color: red;"></span><br/>
+
+    <label for="lastName"style="color:brown"><b>Last Name:</b></label><span style="padding-left: 7%;"></span>
+    <input type="text" id="lastName" pattern="[A-Za-z]+"  placeholder="Enter Last Name" style="padding-left: 15%; padding-right: 20%; padding-top: 0.5%; padding-bottom: 0.5%;border: 3px solid red" float:left;/><br/>
+    <span id="lastNameError" style="color: red;"></span><br/>
+
+    <label for="gender" style="color:brown"><b>Gender:</b></label><span style="padding-left: 19%;"></span>
+    <input type="radio" name="gender" value="male" /> Male
+    <input type="radio" name="gender" value="female" /> Female<br/><br>
+
+   
+    <label for="dob" style="color:brown"><b>Date of Birth:</b></label><span style="padding-left: 5%;"></span>
+    <input type="date" id="dob"  style="border: 3px solid red;padding-left: 17%; padding-right: 26%; padding-top: 0.5%; padding-bottom: 0.5%"/><br/><br>
+    
+	<label for="user" style="color:brown"><b>UserName:</b></label><span style="padding-left: 5%;"></span>
+    <input type="text" id="user"  style="border: 3px solid red;padding-left: 12%; padding-right: 26%; padding-top: 0.5%; padding-bottom: 0.5%"/><br/><br>
+    
+    <label for="email" style="color:brown"><b>Email Address:</b></label><span style="padding-left: 3.5%;"></span>
+    <input type="email" id="email" placeholder="Enter your email" style="padding-left:17%; padding-right: 18%; padding-top: 0.5%; padding-bottom: 0.5%;border: 3px solid red"/><br/><br>
+
+    <label for="password" style="color:brown"><b>Password:</b></label><span style="padding-left: 9%;"></span>
+    <input type="password" id="password"  placeholder="Enter your password min 8 characters" style="padding-left: 15%; padding-right: 20%; padding-top: 0.5%; padding-bottom: 0.5%;border: 3px solid red"/><br/><br>
+
+    <label for="confirmPassword" style="color:brown"><b>Confirm Password:</b></label><span style="padding-left: 2%;"></span>
+    <input type="password" id="confirmPassword" placeholder="confirm password" style="padding-left: 12%; padding-right: 20%; padding-top: 0.5%; padding-bottom: 0.5%;border: 3px solid red"/><br/><br>
+
+    <label for="phone" style="color:brown"><b>Phone:</b></label><span style="padding-left: 12.5%;"></span>
+    
+    <input type="number" id="phone" pattern="[0-9]"title="Phone number must contain 10 digits" required placeholder="Enter your phone number" style="padding-left: 15%; padding-right: 13%; padding-top: 0.5%; padding-bottom: 0.5%;border: 3px solid red"/><br/>
+    <span id="phoneError" style="color: red;"></span><br/>
+
+    <label for="address" style="color:brown"><b>Address:</b></label><span style="padding-left:10%;"></span>
+    <textarea id="address" placeholder="Enter your address" style="padding-left: 15%; padding-right: 21%; padding-top: 0.5%; padding-bottom: 0.5%;border: 3px solid red" rows="4"></textarea><br/><br>
+    <label for="photo" style="color:brown"><b>Upload Photo:</b></label> <span style="color:red"><span style="padding-left: 5%;"></span><b>Max size is 100 kb</b></span>
+    <input type="file" id="photo"  /><br/><br>
+
+    <input type="checkbox" id="declarationCheckbox" required />
+    <label for="declarationCheckbox">I hereby declare that the above information is mine and correct.</label><br/>
+    <span id="checkboxError" style="color: red;"></span><br/><br>
+    <span style="padding-left: 8%;"></span>
+    <input type="submit" value="Register" style="background-color: violet; padding-left: 50px; padding-right: 50px; padding-top: 4px; padding-bottom: 4px;"/><span style="padding-left: 7%;"></span>
+    <input type="reset" value="Reset" id="resetBtn" style="background-color: violet; padding-left: 53px; padding-right: 54px;padding-top: 4px; padding-bottom: 4px;"/><br>
+  </form>
+  <script>
+    // Input validation messages
+    $("#firstName").on("input", function() {
+      if (!$(this).val().match(/^[A-Za-z]+$/)) {
+        $("#firstNameError").text("*Please enter only alphabets.*");
+      } else {
+        $("#firstNameError").text("");
+      }
+    });
+
+    $("#lastName").on("input", function() {
+      if (!$(this).val().match(/^[A-Za-z]+$/)) {
+        $("#lastNameError").text("*Please enter only the alphabets.*");
+      } else {
+        $("#lastNameError").text("");
+      }
+    });
+
+   
+  
+    $("#phone").on("input", function() {
+        var phone = $(this).val();
+        
+   
+        // Validate phone number length
+        if (phone.length !== 10) {
+          $("#phoneError").text("*Phone number must contain 10 digits*");
+        } else {
+          $("#phoneError").text("");
+        }
+      });
+    </script>
+</body>
+</html>
